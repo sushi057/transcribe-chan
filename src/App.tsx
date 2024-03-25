@@ -1,7 +1,11 @@
-import { BsFillPlusCircleFill } from "react-icons/bs";
+import { useState } from "react";
 import { MdLyrics } from "react-icons/md";
+import AddFileMain from "./assets/components/AddFileMain";
+import FileSelectedMain from "./assets/components/FileSelectedMain";
 
 function App() {
+  const [fileSelected, setFileSelected] = useState(false);
+
   return (
     <div className="font-[Space Grotesk] flex min-h-screen flex-col justify-between bg-[url('https://goodtape.io/images/background-illustrations/alex-william-1_1280x1280.jpg.webp')] bg-cover bg-fixed px-8 py-4 text-white">
       <nav>
@@ -15,7 +19,7 @@ function App() {
           </button>
         </header>
         <div className="mt-4 flex flex-col items-start">
-          <h1 className="w-10/12 font-semibold md:text-2xl lg:text-3xl">
+          <h1 className="w-10/12 font-semibold tracking-wide md:text-2xl lg:text-3xl">
             Experience the seamless transition from audio to text designed
             specifically for नेपाली audio.
           </h1>
@@ -24,21 +28,7 @@ function App() {
           </button>
         </div>
       </nav>
-      <main className="mt-4 grid w-full place-content-center">
-        <div className="flex size-96 flex-col items-center justify-center rounded-xl bg-white text-[#0a0a0a]">
-          <button className=" rounded-full p-0.5 text-[#9225ff] focus:ring-2 focus:ring-[#9225ff] active:border-[#9225ff]">
-            <BsFillPlusCircleFill className="size-12" />
-          </button>
-          <div className="mt-4 text-center">
-            <h1 className="text-2xl font-extrabold">Upload audio file</h1>
-            <p className="mt-1 text-lg">and transcribe instantly</p>
-          </div>
-        </div>
-        <p className="mt-4 text-center font-semibold">
-          Made by <span className="font-extrabold">ziggs & sushi</span> in Patan
-          , Nepal
-        </p>
-      </main>
+      {!fileSelected ? <FileSelectedMain /> : <AddFileMain />}
       <footer className="mt-12 flex flex-row justify-between font-normal">
         <button>Pricing</button>
         <button>Security</button>
