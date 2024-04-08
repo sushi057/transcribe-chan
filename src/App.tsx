@@ -4,7 +4,7 @@ import AddFileMain from "./assets/components/AddFileMain";
 import FileSelectedMain from "./assets/components/FileSelectedMain";
 
 function App() {
-  const [fileSelected, setFileSelected] = useState(false);
+  const [fileUploaded, setFileUploaded] = useState(false);
 
   return (
     <div className="font-[Space Grotesk] flex min-h-screen flex-col justify-between bg-[url('https://goodtape.io/images/background-illustrations/alex-william-1_1280x1280.jpg.webp')] bg-cover bg-fixed px-8 py-4 text-white">
@@ -28,7 +28,11 @@ function App() {
           </button>
         </div>
       </nav>
-      {!fileSelected ? <FileSelectedMain /> : <AddFileMain />}
+      {fileUploaded ? (
+        <FileSelectedMain />
+      ) : (
+        <AddFileMain setFileUploaded={setFileUploaded} />
+      )}
       <footer className="mt-12 flex flex-row justify-between font-normal">
         <button>Pricing</button>
         <button>Security</button>

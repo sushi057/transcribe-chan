@@ -1,12 +1,33 @@
+import React, { SetStateAction, useState } from "react";
 import { BsFillPlusCircleFill } from "react-icons/bs";
 
-function AddFileMain() {
+function AddFileMain({
+  setFileUploaded,
+}: {
+  setFileUploaded: React.Dispatch<SetStateAction<boolean>>;
+}) {
+  const [selectedFile, setSelectedFile] = useState<File | undefined>();
+
+  const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFileUploaded(true);
+    if (e.target.files) {
+      setSelectedFile(e.target.files[0]);
+      console.log(e.target.files[0].name);
+    }
+
+    const response = await fetch("localhost:9000/api", {
+      body: selectedFile,
+    });
+    return response.json();
+  };
+
   return (
     <main className="mt-4 grid w-full place-content-center">
       <div className="flex size-96 flex-col items-center justify-center rounded-xl bg-white text-[#0a0a0a]">
-        <button className=" rounded-full p-0.5 text-[#9225ff] focus:ring-2 focus:ring-[#9225ff] active:border-[#9225ff]">
+        <label className="cursor-pointer rounded-full p-0.5 text-[#9225ff] focus:ring-2 focus:ring-[#9225ff] active:border-[#9225ff]">
           <BsFillPlusCircleFill className="size-12" />
-        </button>
+          <input type="file" className="hidden" onChange={handleFileUpload} />
+        </label>
         <div className="mt-4 text-center">
           <h1 className="text-2xl font-extrabold">Upload audio file</h1>
           <p className="mt-1 text-lg">and transcribe instantly</p>
