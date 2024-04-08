@@ -19,11 +19,11 @@ function App() {
           </button>
         </header>
         <div className="mt-4 flex flex-col items-start">
-          <h1 className="w-10/12 font-semibold tracking-wide md:text-2xl lg:text-3xl">
+          <h1 className="w-4/5 font-semibold tracking-wide md:text-2xl lg:text-4xl">
             Experience the seamless transition from audio to text designed
             specifically for नेपाली audio.
           </h1>
-          <button className="mt-2 rounded-full bg-white px-6 py-1 font-semibold text-[#0a0a0a]">
+          <button className="mt-4 rounded-full bg-white px-6 py-1 font-semibold text-[#0a0a0a]">
             Tell me more
           </button>
         </div>
