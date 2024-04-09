@@ -6,19 +6,24 @@ function AddFileMain({
 }: {
   setFileUploaded: React.Dispatch<SetStateAction<boolean>>;
 }) {
-  const [selectedFile, setSelectedFile] = useState<File | undefined>();
+  // const [selectedFile, setSelectedFile] = useState<File | undefined>();
 
   const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     setFileUploaded(true);
-    if (e.target.files) {
-      setSelectedFile(e.target.files[0]);
-      console.log(e.target.files[0].name);
-    }
 
-    const response = await fetch("localhost:9000/api", {
-      body: selectedFile,
-    });
-    return response.json();
+    if (e.target.files) {
+      const formData = new FormData();
+      formData.append("sound_file", e.target.files[0]);
+
+      console.log(e.target.files[0].name);
+
+      const response = await fetch("http://127.0.0.1:5000", {
+        method: "POST",
+        body: formData,
+      });
+      const data = await response.json();
+      console.log(data);
+    }
   };
 
   return (

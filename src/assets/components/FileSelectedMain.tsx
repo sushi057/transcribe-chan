@@ -13,10 +13,6 @@ function FileSelectedMain() {
         </div>
       </div>
       <div className="w-full">
-        {/* <div>
-          <p>Language</p>
-          <p>Nepali</p>
-        </div> */}
         <div className="mb-4 flex items-start gap-3">
           <input
             className="mt-0.5 size-6 cursor-pointer accent-[#9225ff]"
