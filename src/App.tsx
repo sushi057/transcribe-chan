@@ -2,6 +2,7 @@ import { useState } from "react";
 import { MdLyrics } from "react-icons/md";
 import AddFileMain from "./assets/components/AddFileMain";
 import FileSelectedMain from "./assets/components/FileSelectedMain";
+import TranscriptMain from "./assets/components/TranscriptMain";
 
 function App() {
   const [fileUploaded, setFileUploaded] = useState(false);
@@ -19,7 +20,7 @@ function App() {
           </button>
         </header>
         <div className="mt-4 flex flex-col items-start">
-          <h1 className="w-4/5 font-semibold tracking-wide md:text-2xl lg:text-4xl">
+          <h1 className="w-2/3 font-semibold tracking-wide md:text-2xl lg:text-4xl">
             Experience the seamless transition from audio to text designed
             specifically for नेपाली audio.
           </h1>
@@ -32,6 +33,7 @@ function App() {
         <FileSelectedMain />
       ) : (
         <AddFileMain setFileUploaded={setFileUploaded} />
+        // <TranscriptMain />
       )}
       <footer className="mt-12 flex flex-row justify-between font-normal">
         <button>Pricing</button>

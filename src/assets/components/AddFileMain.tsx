@@ -9,7 +9,7 @@ function AddFileMain({
   // const [selectedFile, setSelectedFile] = useState<File | undefined>();
 
   const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFileUploaded(true);
+    // setFileUploaded(true);
 
     if (e.target.files) {
       const formData = new FormData();
