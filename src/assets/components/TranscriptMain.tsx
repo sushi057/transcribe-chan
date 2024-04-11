@@ -1,6 +1,6 @@
 import { BiClipboard, BiDownload, BiLock } from "react-icons/bi";
-
-function TranscriptMain() {
+import { SetStateAction } from "react";
+function TranscriptMain({sentences}: {sentences: React.Dispatch<SetStateAction<any[]>>}) {
   return (
     <main className="mx-auto mt-4 flex w-full flex-col items-center gap-28 rounded-xl bg-white px-10 py-6 text-[#0a0a0a]">
       <section className="flex w-full flex-row items-center justify-between font-semibold text-[#606161]/80">
@@ -21,7 +21,7 @@ function TranscriptMain() {
       <section className="self-start pl-24">
         <div>
           <div>
-            <h1 className="text-4xl font-bold">Voice89.wav</h1>
+            <h1 className="text-4xl font-bold">SoundFile.wav</h1>
             <p className="text-[#606161]">Nepali Audio Transcribed</p>
           </div>
           <div className="mt-4 flex items-center gap-8 text-[#606161]/60">
@@ -35,8 +35,7 @@ function TranscriptMain() {
           </div>
           <div className="mt-12">
             <p>
-              अतिकाम सा सिक्छित नारी हरु जसलाई मा राम्ररे चिन्छु को ठूलो संख्या
-              दूई जोडा नाया रा किम्ति लुगा, दूई चार्जोर सुनका गहना।
+              {sentences}
             </p>
           </div>
         </div>
