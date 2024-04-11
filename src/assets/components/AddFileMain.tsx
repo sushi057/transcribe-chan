@@ -1,15 +1,15 @@
-import React, { SetStateAction } from "react";
+import React, { SetStateAction, useState } from "react";
 import { BsFillPlusCircleFill } from "react-icons/bs";
 
 function AddFileMain({
-  setFileUploaded,
+  setFileUploaded, setSentences
 }: {
   setFileUploaded: React.Dispatch<SetStateAction<boolean>>;
+  setSentences: React.Dispatch<SetStateAction<any[]>>;
 }) {
-  // const [selectedFile, setSelectedFile] = useState<File | undefined>();
-
+  const [selectedFile, setSelectedFile] = useState<File | undefined>();
   const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    // setFileUploaded(true);
+    setFileUploaded(true);
 
     if (e.target.files) {
       const formData = new FormData();
@@ -23,6 +23,7 @@ function AddFileMain({
       });
       const data = await response.json();
       console.log(data);
+      setSentences(data.sentences);
     }
   };
 

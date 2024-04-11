@@ -6,7 +6,8 @@ import TranscriptMain from "./assets/components/TranscriptMain";
 
 function App() {
   const [fileUploaded, setFileUploaded] = useState(false);
-
+  const [sentences, setSentences] = useState<any>([]);
+  const [showTranscript, setShowTranscript] = useState(false);
   return (
     <div className="font-[Space Grotesk] flex min-h-screen flex-col justify-between bg-[url('https://goodtape.io/images/background-illustrations/alex-william-1_1280x1280.jpg.webp')] bg-cover bg-fixed px-8 py-4 text-white">
       <nav>
@@ -30,18 +31,31 @@ function App() {
         </div>
       </nav>
       {fileUploaded ? (
-        <FileSelectedMain />
+        <>
+        <FileSelectedMain setShowTranscript={setShowTranscript} />
+        {showTranscript && <TranscriptMain sentences = {sentences} />}
+        </>
       ) : (
-        <AddFileMain setFileUploaded={setFileUploaded} />
-        // <TranscriptMain />
+        <>
+          <AddFileMain setFileUploaded={setFileUploaded} setSentences={setSentences} /> 
+          
+          {showTranscript && 
+          <>
+          <TranscriptMain sentences = {sentences} />
+          <button onClick={()=>setShowTranscript(false)} className="mt-8 rounded-xl bg-[#9225ff] px-4 py-2 text-white font-semibold">New file</button>
+          </>}   
+        </>
       )}
       <footer className="mt-12 flex flex-row justify-between font-normal">
-        <button>Pricing</button>
-        <button>Security</button>
-        <button>About</button>
-        <button>Terms of service</button>
-        <button>Privacy Policy</button>
-        <button>Cookies</button>
+        {/* <button>Pricing</button>
+        <button>Security</button> */}
+        <button>Aadish Bhattarai</button>
+        <button>Dikshya Parajuli</button>
+        <button>Sanjay K.C</button>
+        <button>Subash Joshi</button>
+        
+        {/* <button>Privacy Policy</button> */}
+        {/* <button>Cookies</button> */}
       </footer>
     </div>
   );

@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useState, SetStateAction} from "react";
 import { BsFillCheckCircleFill } from "react-icons/bs";
 
-function FileSelectedMain() {
+function FileSelectedMain({ setShowTranscript}:{ setShowTranscript: React.Dispatch<SetStateAction<boolean>>}) {
   const [checkbox, setCheckbox] = useState(false);
   return (
     <main className="mx-auto mt-4 flex w-fit flex-col items-center rounded-xl bg-white px-10 text-[#0a0a0a]">
@@ -28,10 +28,10 @@ function FileSelectedMain() {
             .
           </p>
         </div>
-        <button
+        <button onClick={()=> setShowTranscript(true)}
           className={`mx-auto mb-8 w-full rounded-3xl ${checkbox ? "bg-[#9225ff]/90 hover:bg-[#9225ff]" : "cursor-default bg-[#9225ff]/30"} py-4 text-xl font-bold text-white`}
         >
-          Transcribe
+          Transcribed
         </button>
       </div>
     </main>
